@@ -1,0 +1,1115 @@
+OPENING AN EXE FILE FROM YOUR APP
+X = Shell("c:\???\???.exe", 1)
+
+OPEN ANY FILE FROM YOUR APP
+Shell ("start c:\windows\desktop\try.txt")
+
+PlayWAV ("c:\.wav")
+
+ASCII CHARACTERS
+UNDO = Alt + 282
+† = Cross
+¤ = Alt+15 
+¶ = Alt+20 
+§ = Alt+21 
+Ç = Alt+128 
+ü = Alt+129 
+é = Alt+130 
+â = Alt+131 
+ä = Alt+132 
+à = Alt+133 
+å = Alt+134 
+ç = Alt+135 
+ê = Alt+136 
+ë = Alt+137 
+è = Alt+138 
+ï = Alt+139 
+î = Alt+140 
+ì = Alt+141 
+Ä = Alt+142 
+Å = Alt+143 
+É = Alt+144 
+æ = Alt+145 
+Æ = Alt+146 
+ô = Alt+147 
+ö = Alt+148 
+ò = Alt+149 
+û = Alt+150 
+ù = Alt+151 
+ÿ = Alt+152 
+Ö = Alt+153 
+Ü = Alt+154 
+¢ = Alt+155 
+£ = Alt+156 
+¥ = Alt+157 
+á = Alt+160 
+í = Alt+161 
+ó = Alt+162 
+ú = Alt+163 
+ñ = Alt+164 
+Ñ = Alt+165 
+ª = Alt+166 
+º = Alt+167 
+¿ = Alt+168 
+¬ = Alt+170 
+½ = Alt+171 
+¼ = Alt+172 
+¡ = Alt+173 
+« = Alt+174 
+» = Alt+175 
+¦ = Alt+179 
+ß = Alt+225 
+µ = Alt+230 
+± = Alt+241 
+÷ = Alt+246 
+° = Alt+248 
+· = Alt+250 (small bullet) 
+² = Alt+253 
+© = Alt+0169 
+® = Alt+0174 
+³ = Alt+0179 
+¹ = Alt+0185 
+º = Alt+0186 
+¾ = Alt+0190 
+À = Alt+0192 
+Á = Alt+0193 
+Â = Alt+0194 
+Ã = Alt+0195 
+È = Alt+0200 
+Ê = Alt+0202 
+Ë = Alt+0203 
+Ì = Alt+0204 
+Í = Alt+0205 
+Î = Alt+0206 
+Ï = Alt+0207 
+Ð = Alt+0208 
+Ò = Alt+0210 
+Ó = Alt+0211 
+Ô = Alt+0212 
+Õ = Alt+0213 
+× = Alt+0215 
+Ø = Alt+0216 
+Ù = Alt+0217 
+Ú = Alt+0218 
+Û = Alt+0219 
+Ý = Alt+0221 
+Þ = Alt+0222 
+ä = Alt+0228 
+õ = Alt+0245 
+ø = Alt+0248 
+ý = Alt+0253 
+þ = Alt+0254
+~~~~~~~~~~~~~~~~~~~~
+STRETCHING AN IMAGE
+
+For X = 1 To 60
+Y = Image1.Width
+Image1.Width = Y + 120
+Pause (.001)
+Next X
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+STOP BUTTON:  Put this code in the stop button
+
+Do
+DoEvents
+Loop
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Counting from 5 to 0
+
+Counter = 5
+For X = 1 To 5
+Counter = Counter - 1
+Panel3D1.Caption = Counter
+Timeout (1)
+Next X
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+FULL SCREEN FORM
+
+Make the form have No border, No control box, No name
+Put this in the Form_Load code window
+
+Move 0, 0, screen.Width, screen.Height
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+If you get too many forms, and your visible/invisible
+trick doesn't work, try putting the visible/invisible
+code into a command button on the form you want to
+hide.  Then, after the For X line of code, type the
+code in to make it hit the tab key and space bar.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ADDITION WITH LABELS
+
+G = Label4.Caption
+H = G + 1
+Label4.Caption = H
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+CHANGE THE TITLE TO AMERICA  ONLINE AND THE WELCOME TO STEVE CASE
+
+TopTitle$ = "America  Online"
+NewTitle$ = "Welcome, Steve Case!"
+AO% = FindWindow("AOL Frame25", 0&)
+mofo% = findchildbytitle(AO%, "Mexico Online")
+
+textset mofo%, NewTitle$
+textset AO%, TopTitle$
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+DO SOMETHING WHEN A KEY IS PRESSED
+
+Sub Form_KeyPress (KeyAscii As Integer)
+If Chr(KeyAscii) = Chr(13) Then
+MsgBox "Kewl"
+End If
+
+End Sub
+
+13 = enter key
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Moving something left and right with the keyboard
+
+LEFT = Chr(44)  ,
+RIGHT = Chr(46)   .
+UP = Chr(97)     a
+Down = Chr(122)  z
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Label1.Caption = KeyCode
+If Chr(KeyAscii) = Chr(37) Then
+Show
+Y = image2.Left
+image2.Left = image2.Left - 100
+End If
+If image2.Left < 0 Then
+image2.Left = 5280
+End If
+timeout (.01)
+
+If Chr(KeyAscii) = Chr(38) Then
+Show
+Y = image2.Left
+image2.Left = image2.Left + 100
+End If
+If Chr(KeyAscii) = Chr(38) Then
+image2.Left = image2.Left + 100
+If image2.Left > 5280 Then
+image2.Left = 0
+End If
+timeout (.01)
+End If
+
+If Chr(KeyAscii) = Chr(32) Then
+image4.Top = 200
+timeout (.1)
+image4.Top = 400
+timeout (.1)
+image4.Top = 600
+timeout (.6)
+image4.Top = 3960
+End If
+~~~~~~~~~~~~~~~~~~
+ADDING A PICTURE AT RUNTIME
+
+X = Text2.Text
+Image1.Picture = LoadPicture("" & X & "")
+
+'Text2 being the location of the picture.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ADDING AN OLE OBJECT AT RUNTIME
+
+X = text1.Text
+' Set class.
+    Ole1.Class = "AVIFile"
+    ' Specify source file.
+    Ole1.SourceDoc = X
+    ' Specify the data within the file to be linked.
+    Ole1.SourceItem = "R1C1:R5C5"
+    ' Create a linked object using OleTest.xls.
+    Ole1.Action = 0
+
+'Text1 being the location of the file.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+RANDOMIZE CODE
+
+Randomize
+Dice1 = Int(6 * Rnd + 1)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Sub FormFade(frm As Form)
+
+'  Makes Form Fade To Black
+'  Example:  FormFade(Form1)
+
+For icolVal% = 255 To 0 Step -1
+frm.BackColor = RGB(icolVal%, icolVal%, icolVal%)
+Next icolVal%
+
+End Sub
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+UNLOAD ALL FORMS (The Easy Way)
+Sub UnloadAll ()
+Dim frm As Form
+For Each frm In Forms
+Unload frm
+Next frm
+End Sub
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+COMMON DIALOG STUFF
+
+Private Sub Command1_Click()
+
+CommonDialog1.ShowColor
+frmhello.BackColor = CommonDialog1.Color
+
+End Sub
+
+
+
+Private Sub Command1_Click()
+
+CommonDialog1.Flags = 1
+CommonDialog1.ShowFont
+Label1.FontName = CommonDialog1.FontName
+
+End Sub
+
+
+
+Private Sub Command1_Click()
+CommonDialog1.Flags = 1
+CommonDialog1.ShowFont
+Label1.FontName = CommonDialog1.FontName
+Label1.FontSize = CommonDialog1.FontSize
+
+End Sub
+~~~~~~~~~~~~~~~~~~~~~~~~
+CENTER OF A FORM
+
+Left = 2565
+Top = 1510
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+FADE IN (FROM BLACK 2 WHITE)
+
+&H00404040&
+&H00808080&
+&H00C0C0C0&
+&H00E0E0E0&
+&H00FFFFFF&
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+WHEN YOU WANT TO MAKE THE TEXT BOX RESIZE TO FIT THE WINDOW OF THE 
+FORM IF THE FORM IS RESIZED, PUT THIS IN THE Form_Resize CODE:
+Private Sub Form_Resize()
+    Text1.Width = ScaleWidth
+    Text1.Height = ScaleHeight
+End Sub
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+LET THE USER DRAW ON THE FORM
+
+Declarations
+:
+Dim DrawNow As Integer
+---------------------
+MouseDown (form)
+:
+    DrawNow = -1
+    CurrentX = X
+    CurrentY = Y
+----------------
+MouseMove (form)
+ If DrawNow Then
+        Line -(X, Y)
+        Circle (X, Y), 5
+    End If
+----------------
+MouseUp (form)
+ DrawNow = 0
+--------------
+PROPERTIES
+:
+DrawMode = 13
+DrawStyle = 6
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Dir1_Change
+    ' Update the file list box to synchronize with the directory list box.
+    file1.Path = dir1.Path
+
+Drive1_Change
+    On Error GoTo DriveHandler
+    dir1.Path = drive1.Drive
+    Exit Sub
+
+DriveHandler:
+    drive1.Drive = dir1.Path
+    Exit Sub
+
+TEXT BOX
+    ' Update file list box if user changes pattern.
+    file1.Pattern = txtSearchSpec.Text
+
+Text1_GotFOcus
+    txtSearchSpec.SelStart = 0          ' Highlight the current entry.
+    txtSearchSpec.SelLength = Len(txtSearchSpec.Text)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+DRAG & DROP EVENT
+
+Put this in the DragDrop Procedure of an Image
+
+If TypeOf Source Is Image Then
+        ' Set Picture1 bitmap to same as source control.
+        Image1.Picture = Source.Picture
+    End If
+
+Put This In The MouseDown event of the same Image
+
+Image1.Drag
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+HOW TO GET A PICTURE TO MOVE TO THE SAME HORIZONTAL
+AND VERTICAL POINT OF THE MOUSE
+
+Sub Image1_MouseDown
+
+Picture1.Visible = True
+    CurrentX = X
+    CurrentY = Y
+Picture1.Left = X + 180
+Picture1.Top = Y + 180
+
+180 being half of image width
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+UNLOADING AND LOADING FORMS PROPERLY.  PUT THIS IN
+A CONTROL ON THE FORM YOU WANT TO UNLOAD.  FORM4 
+BEING THE FORM YOU WANT TO UNLOAD AND FORM1 BEGIN
+THE ONE YOU WANT TO BECOME VISIBLE AGAIN.
+
+Form1.Visible = True
+Unload Form4
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+CENTERING A FORM IN THE MIDDLE OF THE SCREEN
+
+    Top = Screen.Height / 2 - Height / 2
+    Left = Screen.Width / 2 - Width / 2
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+COPYING A FILE FROM ONE PLACE TO ANOTHER
+
+SourceFile = "c:\cap1.bmp"  ' Define source filename.
+DestinationFile = "c:\aol30a\Pic.bmp"    ' Define target filename.
+FileCopy SourceFile, DestinationFile    ' Copy source to target.
+
+HELP!:::  When doing this, you are copying a file
+          from one place to another.  But you have
+          to give the file a name.  You can't just
+          type this:
+
+SourceFile = "c:\cap1.bmp"  ' Define source filename.
+DestinationFile = "c:\aol30a"    ' Define target filename.
+FileCopy SourceFile, DestinationFile    ' Copy source to target.
+
+         and think that it is going to copy cap1.bmp
+         to the c:\aol30a folder.  You have to give
+         the new file a name.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+COPYING A FILE FROM ONE PLACE TO ANOTHER WHEN
+YOU DON'T KNOW WHERE THE FILE IS... FINDING IT!
+
+Virus = CurDir       'This gets the current directory where the file is
+SourceFile = "" & CurDir & "\Project1.exe"  ' Define source filename.
+DestinationFile = "c:\windows\startm~1\programs\startup\Winsys.exe"    ' Define target filename.(copying to the startup folder)
+FileCopy SourceFile, DestinationFile    ' Copy source to target.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ERROR HANDLER FOR COMMON DIALOG OPEN
+
+On Error GoTo errhandler
+
+:Code
+:Code
+:Code
+
+errhandler:
+' The user clicked the Cancel button.
+    Exit Sub
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+COLORS!!!
+
+WHITE - &H00FFFFFF&
+Lightest Grey - &H00E0E0E0&
+Next Lightest Grey - &H00C0C0C0&
+Next Lightest Grey 2 - &H00808080&
+Darkest Grey - &H00404040&
+Black - &H00000000&
+Light Red - &H00C0C0FF&
+Medium Red - &H008080FF&
+Red - &H000000FF&
+Light Orange - &H00C0E0FF&
+Medium Orange - &H0080C0FF&
+Orange - &H000080FF&
+Light Yellow - &H00C0FFFF&
+Medium Yellow - &H0080FFFF&
+Yellow - &H0000FFFF&
+Light Green - &H00C0FFC0&
+Medium Green - &H0080FF80&
+Green - &H0000FF00&
+Light Turqoise - &H00FFFFC0&
+Medium Turqoise - &H00FFFF80&
+Turqoise - &H00FFFF00&
+Light Blue - &H00FFC0C0&
+Medium Blue - &H00FF8080&
+Blue - &H00FF0000&
+Light Purple - &H00FFC0FF&
+Medium Purple - &H00FF80FF&
+Purple - &H00FF00FF&
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIVE MOVIE TROUBLE SHOOTER
+
+If you want to make the active movie size
+stay the way you want it to without it 
+going back to the original size, DO THIS:
+
+Set the visible property of the active
+movie to FALSE.  Set the Height and Width
+you want it to be using code.  Then make 
+the Active Movie Visible = True using code.
+Then use the Show keyword below that.
+In the Active Movie code, type the same
+Height and Width in the STATE CHANGE
+procedure.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MESSAGE BOXES
+
+Dim Answer
+Answer = MsgBox("Hello", vbInformation + vbOKOnly, "Greet")
+
+6 = YES
+7 = NO
+SPLIT THE MESSAGE IN A MESSAGE BOX
+
+MsgBox "First Line " & Chr$(10) & "Second Line"
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TO USE THE OTHER KEYS SUCH AS THE CTRL, ALT, 
+LEFT RIGHT DOWN AND UP ARROW KEYS TO MAKE
+SOMETHING DO SOMETHING, LOOK UP THESE WORDS
+IN THE INDEX OF THE VB HELP:
+
+key codes
+
+YOU MUST USE THE KEY CODES IN THE "KEYDOWN" PROCEDURE.
+
+
+~~~~~~~~~~~~~
+PROBLEMS WITH MAKING TWO OBJECTS MOVE WITH THE
+KEYPRESS PROCEDURE.  LIKE IF YOU HAVE TWO PICTURE
+BOXES ON THE SAME FORM AND YOU WANT CERTAIN KEYS
+TO MOVE ONE PICTURE BOX, AND OTHER KEYS TO MOVE
+THE SECOND PICTURE BOX... LIKE A RACING GAME:
+
+Set The KeyPreview On The Form To TRUE.
+
+THE KEYPRESS PROCEDURE IN BOTH THE PICTURE BOX
+AND THE FORM CODE IS NEEDED.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+LOADING A PICTURE WITH THE "COMMONDIALOG" CONTROL:
+
+On Error GoTo errhandler
+CommonDialog1.filename = "*.bmp"
+CommonDialog1.ShowOpen
+Form1.Picture = LoadPicture("" & CommonDialog1.filename & "")
+errhandler:
+' The user clicked the Cancel button.
+    Exit Sub
+
+-----------------
+
+SAVING A PICTURE WITH THE "COMMONDIALOG" CONTROL:
+
+On Error GoTo errhandler
+CommonDialog1.ShowSave
+SavePicture Form1.Picture, "" & CommonDialog1.filename & ""
+errhandler:
+' The user clicked the Cancel button.
+    Exit Sub
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+!!!!!FORMS VISIBLE = TRUE        FORMS VISIBLE = FALSE!!!!!!!
+
+To Do The Form1.Visible = True, Form2.Visible = False Trick,
+You Can't Just Type it in.  Make A Sub procedure and put
+the form visible and form visible = false in there.  Then
+Make Your Code CALL The Procedure When You Want It To Happen.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+DISABLED FORECOLOR = &H00808080&
+ENABLED FORECOLOR = &H00FFFFFF&
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+EXAMPLE OF KEY CODE
+
+Private Sub Text1_KeyDown(KeyCode As Integer, Shift As Integer)
+
+    If KeyCode = vbKeyControl Then   ' Display key combinations.
+MsgBox "kewl"
+End If
+
+End Sub
+
+????????????????????????????????????????
+vbKey0	48	0 key.
+vbKey1	49	1 key.
+vbKey2	50	2 key.
+vbKey3	51	3 key.
+vbKey4	52	4 key.
+vbKey5	53	5 key.
+vbKey6	54	6 key.
+vbKey7	55	7 key.
+vbKey8	56	8 key.
+vbKey9	57	9 key.
+vbKeyF1	0x70	F1 key.
+vbKeyF2	0x71	F2 key.
+vbKeyF3	0x72	F3 key.
+vbKeyF4	0x73	F4 key.
+vbKeyF5	0x74	F5 key.
+vbKeyF6	0x75	F6 key.
+vbKeyF7	0x76	F7 key.
+vbKeyF8	0x77	F8 key.
+vbKeyF9	0x78	F9 key.
+vbKeyF10	F10 key.
+vbKeyF11	F11 key.
+vbKeyF12	F12 key.
+vbKeyA	65	A key.
+vbKeyB	66	B key.
+vbKeyC	67	C key.
+vbKeyD	68	D key.
+vbKeyE	69	E key.
+vbKeyF	70	F key.
+vbKeyG	71	G key.
+vbKeyH	72	H key.
+vbKeyI	73	I key.
+vbKeyJ	74	J key.
+vbKeyK	75	K key.
+vbKeyL	76	L key.
+vbKeyM	77	M key.
+vbKeyN	78	N key.
+vbKeyO	79	O key.
+vbKeyP	80	P key.
+vbKeyQ	81	Q key.
+vbKeyR	82	R key.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+NUMBER PAD
+
+vbKeyNumpad0	0x60	0 key.
+vbKeyNumpad1	0x61	1 key.
+vbKeyNumpad2	0x62	2 key.
+vbKeyNumpad3	0x63	3 key.
+vbKeyNumpad4	0x64	4 key.
+vbKeyNumpad5	0x65	5 key.
+vbKeyNumpad6	0x66	6 key.
+vbKeyNumpad7	0x67	7 key.
+vbKeyNumpad8	0x68	8 key.
+vbKeyNumpad9	0x69	9 key.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+CHANGING A FILE'S ATTRIBUTES
+
+vbNormal		Normal (default).
+vbReadOnly		Read-only.
+vbHidden		Hidden.
+vbSystem		System file.
+vbArchive		File has changed since last backup.
+
+:::EXAMPLE:::
+
+SetAttr "TESTFILE", vbHidden	' Set hidden
+SetAttr "TESTFILE", vbHidden + vbReadOnly  ' Set hidden and read-only 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Create A File Using Your VB App
+
+Open "filename.ext" for output as 1 
+Write #1, "Text To Put To File" 
+Close #1 
+
+
+OPEN A TEXT FILE AND PUT IT INTO A TEXT BOX
+
+    Dim A As String
+    Open "c:\autoexec.bat" For Input As 1
+    A = Input(LOF(1), 1)
+    Close 1
+    Text1.Text = A
+
+SAVING A TEXT FILE
+
+CommonDialog1.ShowSave
+X = CommonDialog1.filename
+Open X For Output As #1
+Print #1, Text1.text
+Close #1
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+PUTTING AN IMAGE ON THE CLIPBOARD
+
+Clipboard.SetData Image1.Picture, vbCFBitmap
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+HIGHLIGHTING THE TEXT IN A TEXTBOX
+
+Text1.SelStart = 0
+Text1.SelLength = Len(Text1.text)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+PUTTING A PICTURE AT THE POSITION THE MOUSE
+IS CLICKED
+
+Private Sub Form_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
+CurrentX = X
+CurrentY = Y
+Picture1.Left = X - 255
+Picture1.Top = Y - 195
+
+Half Of The Picture's Width Is 255
+Half Of The Picture's Height Is 195
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!MCI!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+'DECLARATIONS
+Option Explicit
+
+Private Declare Function auxGetVolume Lib "winmm.dll" (ByVal uDeviceID As Long, lpdwVolume As Long) As Long
+Private Declare Function mciGetDeviceID Lib "winmm.dll" Alias "mciGetDeviceIDA" (ByVal lpstrName As String) As Long
+Private Declare Function mciSendCommand Lib "winmm.dll" Alias "mciSendCommandA" (ByVal wDeviceID As Long, ByVal uMessage As Long, ByVal dwParam1 As Long, ByVal dwParam2 As Long) As Long
+Private Declare Function mciSendString Lib "winmm.dll" Alias "mciSendStringA" (ByVal lpstrCommand As String, ByVal lpstrReturnString As String, ByVal uReturnLength As Long, ByVal hwndCallback As Long) As Long
+Private Declare Function midiOutGetVolume Lib "winmm.dll" (ByVal uDeviceID As Long, lpdwVolume As Long) As Long
+Private Declare Function midiOutSetVolume Lib "winmm.dll" (ByVal uDeviceID As Long, ByVal dwVolume As Long) As Long
+Private Declare Function sndPlaySound Lib "winmm.dll" Alias "sndPlaySoundA" (ByVal lpszSoundName As String, ByVal uFlags As Long) As Long
+Private Declare Function waveOutGetVolume Lib "winmm.dll" (ByVal uDeviceID As Long, lpdwVolume As Long) As Long
+Private Declare Function waveOutSetVolume Lib "winmm.dll" (ByVal uDeviceID As Long, ByVal dwVolume As Long) As Long
+Private Declare Sub keybd_event Lib "user32" (ByVal bVk As Byte, ByVal bScan As Byte, ByVal dwFlags As Long, ByVal dwExtraInfo As Long)
+Private Declare Function BitBlt Lib "gdi32" (ByVal hDestDC As Long, ByVal x As Long, ByVal y As Long, ByVal nWidth As Long, ByVal nHeight As Long, ByVal hSrcDC As Long, ByVal xSrc As Long, ByVal ySrc As Long, ByVal dwRop As Long) As Long
+Private Declare Function GetSystemMetrics Lib "user32" (ByVal nIndex As Long) As Long
+
+Private Type lVolType
+    v As Long
+End Type
+
+Private Type VolType
+    lv As Integer
+    rv As Integer
+End Type
+
+Const SM_CXBORDER = 5
+Const SM_CYBORDER = 6
+Const VK_SNAPSHOT As Byte = &H2C
+Const SRCCOPY = &HCC0020 ' (DWORD) dest = source
+Const MCI_SET = &H80D
+Const MCI_SET_DOOR_OPEN = &H100&
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+WAV VOLUME UP
+
+
+    Dim id As Long, v As Long, i As Long, lVol As lVolType, Vol As VolType, lv As Double, rv As Double
+    id = -1     ' the ALL DEVICE id - this will change the master WAVE volume!
+    i = waveOutGetVolume(id, v)
+    lVol.v = v
+    LSet Vol = lVol
+    lv = Vol.lv: rv = Vol.rv
+    lv = lv + &HFFF
+    rv = rv + &HFFF
+    If lv > 32767 Then lv = lv - 65536
+    If rv > 32767 Then rv = rv - 65536
+    Vol.lv = lv
+    Vol.rv = rv
+    LSet lVol = Vol
+    v = lVol.v
+    i = waveOutSetVolume(id, v)
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+WAV VOLUME DOWN
+
+
+    Dim id As Long, v As Long, i As Long, lVol As lVolType, Vol As VolType, lv As Double, rv As Double
+    id = -1     ' the ALL DEVICE id - this will change the master WAVE volume!
+    i = waveOutGetVolume(id, v)
+    lVol.v = v
+    LSet Vol = lVol
+    lv = Vol.lv: rv = Vol.rv
+    lv = lv - &HFFF
+    rv = rv - &HFFF
+    If lv < -32768 Then lv = 65535 + lv
+    If rv < -32768 Then rv = 65535 + rv
+    Vol.lv = lv
+    Vol.rv = rv
+    LSet lVol = Vol
+    v = lVol.v
+    i = waveOutSetVolume(id, v)
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+PLAY MIDI FILE
+
+    Dim i As Long, RS As String, cb As Long, W$
+    RS = Space$(128)
+    W$ = "c:\windows\desktop\stuff2\dreams.mid"
+    i = mciSendString("open sequencer!" & W$ & " alias midi", RS, 128, cb)
+    If i Then MsgBox "Error! Probably file not found. Modify the code to record and play a .MID file on your system."
+    i = mciSendString("play midi", RS, 128, cb)
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+STOP MIDI FILE
+
+    Dim i As Long, RS As String, cb As Long
+    RS = Space$(128)
+    i = mciSendString("stop midi", RS, 128, cb)
+    i = mciSendString("close midi", RS, 128, cb)
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+PLAY CD
+
+    Dim i As Long, RS As String, cb As Long
+    RS = Space$(128)
+    i = mciSendString("open cdaudio", RS, 128, cb)
+    i = mciSendString("set cdaudio time format milliseconds", RS, 128, cb)
+    i = mciSendString("play cdaudio", RS, 128, cb)
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+NEXT CD TRACK
+
+    Dim i As Long, RS As String, cb As Long, W$, s As Long
+    RS = Space$(128)
+    i = mciSendString("status cdaudio current track", RS, 128, cb)
+    If Val(RS) Then
+        s = Val(RS) + 1
+        i = mciSendString("status cdaudio position track " & s, RS, 128, cb)
+        s = Val(RS)
+        If s Then
+            i = mciSendString("play cdaudio from " & s, RS, 128, cb)
+        End If
+    End If
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+PREVIOUS CD TRACK
+
+    Dim i As Long, RS As String, cb As Long, W$, s As Long
+    RS = Space$(128)
+    i = mciSendString("status cdaudio current track", RS, 128, cb)
+    If Val(RS) Then
+        s = Val(RS) - 1
+        i = mciSendString("status cdaudio position track " & s, RS, 128, cb)
+        s = Val(RS)
+        If s Then
+            i = mciSendString("play cdaudio from " & s, RS, 128, cb)
+            ProgressBar4.Line (0, 0)-(ProgressBar4.Width, ProgressBar4.Height), ProgressBar4.BackColor, BF
+        End If
+    End If
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+STOP CD
+
+    Dim i As Long, RS As String, cb As Long
+    RS = Space$(128)
+    i = mciSendString("stop cdaudio", RS, 128, cb)
+    i = mciSendString("close cdaudio", RS, 128, cb)
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+EJECT CD
+
+    Command8_Click
+    Dim i As Long, RS As String, cb As Long, id As Long
+    RS = Space$(128)
+    i = mciSendString("open cdaudio", RS, 128, cb)
+    id = mciGetDeviceID("cdaudio")
+    i = mciSendCommand(id, MCI_SET, MCI_SET_DOOR_OPEN, 0)
+    Command8_Click
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+PLAY A WAV
+
+    Dim i As Long, RS As String, cb As Long, W$
+    RS = Space$(128)
+    W$ = "c:\windows\media\robot~17.wav"
+    i = mciSendString("open waveaudio!" & W$ & " alias sound", RS, 128, cb)
+    If i Then MsgBox "Error! Probably file not found. Modify the code to point to a .WAV file on your system."
+    i = mciSendString("play sound", RS, 128, cb)
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+STOP A WAV
+
+    Dim i As Long, RS As String, cb As Long
+    RS = Space$(128)
+    i = mciSendString("stop sound", RS, 128, cb)
+    i = mciSendString("close sound", RS, 128, cb)
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+PLAY AN AVI
+
+    Dim i As Long, RS As String, cb As Long, A$, x As Long, y As Long
+    RS = Space$(128)
+    A$ = "c:\aim\downloads\new\upbodytest1.avi"
+    i = mciSendString("open AVIvideo!" & A$ & " alias movie parent " & Frame1.hWnd & " style child", RS, 128, cb)
+'    i = mciSendString("put movie window client at 200 0 0 0", RS, 128, cb)
+    If i Then MsgBox "Error! Probably file not found. Modify the code to point to an .AVI file on your system."
+    i = mciSendString("play movie", RS, 128, cb)
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+STOP AN AVI
+
+    Dim i As Long, RS As String, cb As Long
+    RS = Space$(128)
+    i = mciSendString("stop movie", RS, 128, cb)
+    i = mciSendString("close movie", RS, 128, cb)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+SCROLL BAR (Horizontal Example)
+
+HScroll1.Min = 1    ' Initialize scroll bar.
+HScroll1.Max = 2
+HScroll1.LargeChange = 1
+HScroll1.SmallChange = 1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MENU BAR LINE
+
+1. Place a frame control on a form. Set the CAPTION to none, 
+   HEIGHT to 30.
+2. In the Form_Load Event, place the following code:
+
+     Sub Form_Load()
+
+         Frame1.Width = Screen.Width + 100
+         Frame1.Move -50, 0
+
+     End Sub
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ADDING AN ITEM TO A COMBO BOX OR A LIST BOX
+(This was done under the Combo1_KeyPress event)
+
+If Combo1.text = "" Then Exit Sub    'if no text, exit sub
+If Chr(KeyAscii) = Chr(13) Then      'if you press ENTER then
+A = Combo1.text                      'declare A
+        entry = A                    'A will take the place of ENTRY
+        Combo1.AddItem entry         'Add the entry.
+Combo1.text = ""                     'Clear the combo box
+
+End If
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+LOADING A LARGE FILE OR TEXT FILE INTO A TEXT BOX
+(Copy this text into the declarations of your form)
+
+Sub LoadText(lst As TextBox, file As String) 
+                    On Error GoTo error 
+                    Dim mystr As String 
+                    Open file For Input As #1 
+                    Do While Not EOF(1) 
+                    Line Input #1, a$ 
+                    texto$ = texto$ + a$ + Chr$(13) + Chr$(10) 
+                    Loop 
+                    lst = texto$ 
+                    Close #1 
+                    Exit Sub 
+                    error: 
+                    x = MsgBox("File Not Found", vbOKOnly, "Error!!") 
+                    End Sub 
+
+(Call the sub procedure like this)
+
+Call LoadText(Text1,"C:\WINDOWS\filename.ext")
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+PRINTING A DOCUMENT
+
+Sub Command1_Click() 
+                    Form1.Print Text1.Text 
+                    Form1.PrintForm 
+                    Printer.EndDoc
+                    End Sub 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Filling a listbox with each line of a TXT file
+
+Dim aLine As String
+Open "filename.txt" For Input As 1
+Do Until Eof(1)
+    Line Input #1, aLine
+    If Trim$(aLine) <> "" Then List1.AddItem aLine
+Loop
+Close 1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`
+BLENDING 2 PICTURES
+
+Add three PictureBox controls to the form and name them picSrc1, picSrc2 and
+     picDest. Load two different bitmaps into picSrc1 and picSrc2, making sure that the
+     bitmaps are the same size. Leave the Picture property of picDest blank, but make it
+     the same size as the other two PictureBoxes. Also make sure that the ScaleMode
+     property of all three PictureBoxes is set to 3 - Pixels. Add a CommandButton named
+     cmdBlend. Next, add the following code to the form:
+
+     Option Explicit 
+
+     Private Function Blend( _
+          ByVal Color1 As Long, _
+          ByVal Color2 As Long) As Long
+
+          Dim r As Long, g As Long, b As Long
+
+          b = ((((Color2 \ &H10000) And &HFF) * 50) + _
+               (((Color1 \ &H10000) And &HFF) * 50)) \ 100
+
+          g = ((((Color2 \ &H100) And &HFF) * 50) + _
+               (((Color1 \ &H100) And &HFF) * 50)) \ 100
+
+          r = (((Color2 And &HFF) * 50) + _
+               ((Color1 And &HFF) * 50)) \ 100
+
+          Blend = RGB(r, g, b)
+     End Function
+
+     Private Sub cmdBlend_Click()
+          Dim x As Long
+          Dim y As Long
+
+          For y = 0 To picSrc1.ScaleHeight
+               For x = 0 To picSrc1.ScaleWidth
+                    picDest.PSet (x, y), Blend( _
+                         picSrc1.Point(x, y), _
+                         picSrc2.Point(x, y))
+               Next
+          Next
+     End Sub
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MAKE A CONTROL MOVABLE AT RUN-TIME USING DRAG & DROP
+
+'Add a control to your form. In this case, we used a
+'Picture Box named Picture1
+'Copy the following in the declarations of your form.
+
+Option Explicit
+               Public globalX As Integer
+               Public globalY As Integer
+
+               Private Sub Form_DragDrop(Source As Control, X As _
+               Single, Y As Single)
+               Picture1.Move X - globalX, Y - globalY
+               End Sub
+
+               Private Sub Picture1_MouseDown(Button As Integer, _
+               Shift As Integer, X As Single, Y As Single)
+               Picture1.Drag vbBeginDrag
+               globalX = X
+               globalY = Y
+               End Sub
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+INTEGRATE PICTURES
+
+
+PUT THIS IN MODULE:
+
+Declare Function SetPixel Lib "gdi32" Alias "SetPixelV" _
+(ByVal hdc As Long, ByVal x As Long, ByVal y As Long, _
+ByVal crColor As Long) As Long
+Declare Function GetPixel Lib "gdi32" (ByVal hdc As Long, ByVal x As Long, ByVal y As Long) As Long
+
+
+PUT THIS IN DECLARATIONS
+
+Public Sub rotateimage()
+Dim x As Long
+Dim y As Long
+Picture1.Height = Picture1.Width
+Picture1.Width = Picture1.Height
+
+For x = 0 To Picture1.Width
+For y = 0 To Picture1.Height
+Call SetPixel(Picture1.hdc, y, x, GetPixel(Picture1.hdc, x, y))
+DoEvents
+Next
+Next
+Exit Sub
+
+End Sub
+
+
+PUT THIS IN COMMAND BUTTON
+
+rotateimage
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+CREATING A NEW CONTROL AT RUN-TIME
+
+(Place a label on your form and set the
+index property to 0.  When you run the
+program, the new control will be located
+at the Top Left corner of your form.)
+
+Load Label1(1)
+Label1(1).Left = 0
+Label1(1).Top = 0
+Label1(1).Visible = True
+
+(A BETTER EXAMPLE...  this one does the same
+as the one above, except this one changes the
+caption of the new control.)
+
+On Error GoTo erhandler
+Kewl:
+Randomize
+Hip = Int(9999 * Rnd + 1)
+Load Label1(Hip)
+Label1(Hip).Left = 0
+Label1(Hip).Top = 0
+Label1(Hip).Visible = True
+Label1(Hip).Caption = "The New Control"
+Exit Sub
+erhandler:
+GoTo Kewl
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+SEARCHING FOR TEXT IN A TEXT BOX AND
+HIGHLIGHTING IT, IF FOUND.
+
+Dim Search, Where	' Declare variables.
+	' Get search string from user.
+	Search = InputBox("Enter text to be found:")
+	Where = InStr(Text1.Text, Search)	' Find string in text.
+	If Where Then	' If found,
+		Text1.SelStart = Where - 1	' set selection start 
+		Text1.SelLength = Len(Search)	' set selection length.
+	Else
+		MsgBox "String not found."	' Notify user.
+	End If
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+This Will Capture A Picture Of Your Form And
+Paint It To A Picture Control.
+Put A Picture Control On Your Form.
+
+PUT IN DECLARATIONS:
+
+Option Explicit
+Private Declare Sub keybd_event Lib "user32" (ByVal bVk As Byte, ByVal bScan As Byte, ByVal dwFlags As Long, ByVal dwExtraInfo As Long)
+Const VK_SNAPSHOT As Byte = &H2C
+
+PUT IN COMMAND BUTTON
+
+    Dim lWidth As Long, lHeight As Long
+    Clipboard.Clear
+    Call keybd_event(VK_SNAPSHOT, 0, 0, 0)
+    DoEvents
+
+    If Width > Picture1.ScaleWidth Then
+        lWidth = Picture1.ScaleWidth
+        lHeight = (Picture1.ScaleWidth / Width) * Height
+    Else
+        lWidth = Width
+        lHeight = Height
+    End If
+    Picture1.PaintPicture Clipboard.GetData, 0, 0, lWidth, lHeight
+    ' SavePicture Clipboard.GetData, Me.Name & ".BMP"
+~~~~~~~~~~~~~~~~~
+
+-Brought 2 U By SESoftware@Hotmail.com

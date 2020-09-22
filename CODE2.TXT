@@ -1,0 +1,1333 @@
+VBCRLF = Return
+~~~~~~~~~~~~~~~
+PHUCK YOU FACE 4 AOL
+
+‹^›‹{ `;´ }›‹^›
+~~~~~~~~~~~~~~~~~~~~
+SIGN OFF-LINE USING SENDKEYS
+
+AppActivate "america  online"
+SendKeys "", True
+SendKeys "(%)S+S"
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+THIS SHOULD OPEN A FILE INTO ANY TEXT BOX -FAST.
+
+Dim FileLength
+Open "yourfile.txt" For Input As #1
+FileLength = LOF(1)
+var1 = Input(FileLength, #1)
+Text1.Text = var1
+Close #1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+CHECK IF DIRECTORY EXISTS
+
+Public Function DirExists(ByVal sDirName As String) As Boolean
+    Dim sDir As String
+    On Error Resume Next
+    DirExists = False
+    sDir = Dir$(sDirName, vbDirectory)
+    If (Len(sDir) > 0) And (Err = 0) Then
+        DirExists = True
+    End If
+
+End Function
+~~~~~~~~~~~~~~~~~~~~~~
+OPEN A FILE AND PLACE EACH LINE OF THE FILE
+IN SEPARATE TEXT BOXES (assuming the text
+boxes are in arrays).
+
+Open "c:\filename.ext" For Input As 1
+Dim k As Long, a As String
+Do Until EOF(1)
+Input #1, a
+Text1(k).Text = a
+k = k + 1
+Loop
+Close 1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+OPEN A FILE AND ADD EACH LINE OF THE FILE
+INTO A COMBO BOX.
+
+Open "c:\filename.ext" For Input As 1
+Dim k As Long, a As String
+Do Until EOF(1)
+Input #1, a
+Combo1.AddItem a
+k = k + 1
+Loop
+Close 1
+~~~~~~~~~~~~~~~~~~~~~~~
+WIDTH AND HEIGHT FOR FORM INSIDE OF MDI FORM
+SO IT WILL COVER THE BLANK MDI PART
+
+Form1.Width = MDIForm1.Width - 175
+Form1.Height = MDIForm1.Height - 660
+~~~~~~~~~~~~~~~~~~~~~~~~~
+DETERMINE IF A FILE EXISTS
+
+Dim FileInQuestion
+FileInQuestion = Dir("C:\AUTOEXEC.BAT")
+
+If FileInQuestion = "" Then
+MsgBox "No such file!"
+Else
+MsgBox "File exists!"
+End If
+~~~~~~~~~~~~~~~~~~~~~~~~~
+OPENING A FILE AND PUTTING EACH LINE OF THAT
+FILE INTO SEPARATE TEXT BOXES.
+
+Open "filename.ext" For Input As 1
+Dim k As Long, a As String
+Input #1, a
+Text1.text = a
+Input #1, a
+Text2.text = a
+Input #1, a
+Text3.text = a
+Input #1, a
+Text4.text = a
+Input #1, a
+Text5.text = a
+Input #1, a
+Text6.text = a
+Input #1, a
+Text7.text = a
+Input #1, a
+Text8.text = a
+Close 1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+SUPPOSEDLY DIAL A NUMBER WITHOUT USING A CONTROL
+
+PhoneNumber$ = "(123)456-7890" 
+
+Open "COM2:" For Output As #1 'or COM1 
+
+Print #1, "ATDT" & PhoneNumber$ & Chr$(13) 
+
+Close #1
+~~~~~~~~~~~~~~~~~~~~~~
+DIAL A NUMBER USING MSCOMM
+'CHANGE COMM PORT
+On Error Resume Next
+MSComm1.PortOpen = True
+PhoneNumber$ = "4771000"
+MSComm1.Output = "ATD" + PhoneNumber$ + Chr$(13)
+
+TO HANG UP
+MSComm2.PortOpen = False
+~~~~~~~~~~~~~~~~~~~~~~~~
+PRINTING THE CONTENTS OF A LISTBOX
+
+Public Sub PrintListBox(TheList As ListBox)
+
+
+    Dim SaveList As Long
+
+    On Error Resume Next
+
+    Printer.FontSize = 12
+
+
+    For SaveList& = 0 To TheList.ListCount - 1
+
+        Printer.Print TheList.List(SaveList&)
+
+    Next SaveList&
+
+
+    Printer.EndDoc
+
+End Sub
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+PRINTING THE CONTENTS OF A TEXTBOX
+
+    On Error Resume Next
+
+    Printer.FontSize = 12
+
+    Printer.Print Text1.Text
+
+    Printer.EndDoc
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+GRADIENT FORM
+Set the AutoRedraw property of the form
+to TRUE.
+
+DECLARATIONS:
+
+Private Sub Gradient(frm As Object, color1 As Long, color2 As Long)
+
+
+    Dim r1, g1, b1, r2, g2, b2, boxStep, posY As Integer
+
+    Dim redStep, greenStep, BlueStep As Integer
+
+    ' separate color1 to red,green and blue
+
+    r1 = color1 Mod &H100
+
+    g1 = (color1 \ &H100) Mod &H100
+
+    b1 = (color1 \ &H10000) Mod &H100
+
+    ' separate color2 to red,green and blue
+
+    r2 = color2 Mod &H100
+
+    g2 = (color2 \ &H100) Mod &H100
+
+    b2 = (color2 \ &H10000) Mod &H100
+
+    ' calculate box height
+
+    boxStep = frm.ScaleHeight / 63
+
+    posY = 0
+
+
+    If g1 > g2 Then
+
+        greenStep = 0
+
+    ElseIf g2 > g1 Then
+
+        greenStep = 1
+
+    Else
+
+        greenStep = 2
+
+    End If
+
+
+
+    If r1 > r2 Then
+
+        redStep = 0
+
+    ElseIf r2 > r1 Then
+
+        redStep = 1
+
+    Else
+
+        redStep = 2
+
+    End If
+
+
+
+    If b1 > b2 Then
+
+        BlueStep = 0
+
+    ElseIf b2 > b1 Then
+
+        BlueStep = 1
+
+    Else
+
+        BlueStep = 2
+
+    End If
+
+
+
+    For i = 1 To 63
+
+        frm.Line (0, posY)-(frm.ScaleWidth, posY + boxStep), RGB(r1, g1, b1), BF
+
+
+        If redStep = 1 Then
+
+            r1 = r1 + 4
+
+
+            If r1 > r2 Then
+
+                r1 = r2
+
+            End If
+
+
+        ElseIf redStep = 0 Then
+
+            r1 = r1 - 4
+
+
+            If r1 < r2 Then
+
+                r1 = r2
+
+            End If
+
+
+        End If
+
+
+        
+
+
+        If greenStep = 1 Then
+
+            g1 = g1 + 4
+
+
+            If g1 > g2 Then
+
+                g1 = g2
+
+            End If
+
+
+        ElseIf greenStep = 0 Then
+
+            g1 = g1 - 4
+
+
+            If g1 < g2 Then
+
+                g1 = g2
+
+            End If
+
+
+        End If
+
+
+        
+
+
+        If BlueStep = 1 Then
+
+            b1 = b1 + 4
+
+
+            If b1 > b2 Then
+
+                b1 = b2
+
+            End If
+
+
+        ElseIf BlueStep = 0 Then
+
+            b1 = b1 - 4
+
+
+            If b1 < b2 Then
+
+                b1 = b2
+
+            End If
+
+
+        End If
+
+
+        
+
+        posY = posY + boxStep
+
+    Next i
+
+
+End Sub
+
+
+CALL LIKE THIS
+Gradient Me, VbBlue,VbRed
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MAKE A PICTURE BOUNCE
+
+'COPY AND PASTE THIS INTO A MODULE:
+
+Dim VelX As Integer 'The X velocity of the bouncing picture
+
+Dim VelY As Integer 'Y velocity
+
+Dim MaxX As Integer 'Maximum X coordinate
+
+Dim MaxY As Integer 'Max Y
+
+Dim X As Integer 'X and Y coordinates of the pic
+
+Dim Y As Integer
+
+
+1.) Make a New Project in your 32bit Visual Basic
+
+2.) Add a New Module(Bas) to the New Project
+
+3.) Add a Timer to the Form(Timer1)
+
+4.) Make the Timer1's Interval: 50
+
+5.) Add a PictureBox to the Form(Picture1)and insert a picture
+
+     in the 'PictureBox
+
+
+Private Sub Form_Load()
+
+
+    Me.ScaleMode = 3 'Pixels
+
+    Picture1.ScaleMode = 3
+
+    VelX = 3 'Horizontal and vertical velocities
+
+    VelY = 3 'Measured in pixels
+
+    MaxX = Me.ScaleWidth - Picture1.ScaleWidth 'Max X and Y
+
+    MaxY = Me.ScaleHeight - Picture1.ScaleHeight
+
+    X = 0
+
+    Y = 0
+
+End Sub
+
+
+
+Private Sub Timer1_Timer()
+
+
+    'This is the main loop
+
+    X = X + VelX ' Increase X and Y coordinates
+
+    Y = Y + VelY
+
+
+    If X <= 0 Or X >= MaxX Then ' If X is out of bounds,
+
+        VelX = -VelX' invert the horizontal
+
+    End If' velocity in order
+
+
+    ' to make it move back
+
+
+    If Y <= 0 Or Y >= MaxY Then ' The same thing With the
+
+        VelY = -VelY' vertical (Y) coordinate
+
+    End If
+
+
+    Picture1.Move X, Y ' Move the picture to the
+
+    ' calculated X and Y positions
+
+End Sub
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MAKE A TEXTBOX SIZABLE
+
+a text box (Text1), 
+
+     a command button (cmdEnd), 
+
+     2 menu items (mnuSize & mnuRestore), and 
+
+     2 labels (Label1 & Label2).
+
+
+DECLARATIONS
+
+Dim initBoxStyle As Long
+
+Dim initLeft As Integer
+
+Dim initTop As Integer
+
+Dim initWidth As Integer
+
+Dim initHeight As Integer
+
+'windows constants
+
+Const SWP_DRAWFRAME = &H20
+
+Const SWP_NOMOVE = &H2
+
+Const SWP_NOSIZE = &H1
+
+Const SWP_NOZORDER = &H4
+
+Const SWP_FLAGS = SWP_NOZORDER Or SWP_NOSIZE Or SWP_NOMOVE Or SWP_DRAWFRAME
+
+Const GWL_STYLE = (-16)
+
+Const WS_THICKFRAME = &H40000
+
+
+Private Declare Function GetWindowLong Lib "user32" Alias "GetWindowLongA" (ByVal hwnd As Long, ByVal nIndex As Long) As Long
+
+
+Private Declare Function SetWindowLong Lib "user32" Alias "SetWindowLongA" (ByVal hwnd As Long, ByVal nIndex As Long, ByVal dwNewLong As Long) As Long
+
+
+Private Declare Function SetWindowPos Lib "user32" (ByVal hwnd As Long, ByVal hWndInsertAfter As Long, ByVal X As Long, ByVal Y As Long, ByVal cx As Long, ByVal cy As Long, ByVal wFlags As Long) As Long
+
+
+
+
+
+
+Private Sub Form_Load()
+
+
+    'position the form 
+
+    Me.Move (Screen.Width - Me.Width) \ 2, (Screen.Height - Me.Height) \ 2
+
+    
+
+    'set up a few variables needed later 
+
+    initBoxStyle& = GetWindowLong(Text1.hwnd, GWL_STYLE)
+
+    initLeft% = Text1.Left
+
+    initTop% = Text1.Top
+
+    initWidth% = Text1.Width
+
+    initHeight% = Text1.Height
+
+    
+
+    'make sure the defaults are set 
+
+    SetControlStyle initBoxStyle&, Text1
+
+    
+
+    Label1 = "Text Width : " & Text1.Width
+
+    Label2 = "Text Height : " & Text1.Height
+
+End Sub
+
+
+
+Private Sub Form_Unload(Cancel As Integer)
+
+
+    'restore the control to a normal textbox 
+
+    SetControlStyle initBoxStyle&, Text1
+
+End Sub
+
+
+
+Private Sub Form_Click()
+
+
+    'restore the control to a normal textbox 
+
+    SetControlStyle initBoxStyle&, Text1
+
+    
+
+    Label1 = "Text Width : " & Text1.Width
+
+    Label2 = "Text Height : " & Text1.Height
+
+    
+
+End Sub
+
+
+
+Private Sub mnuSize_Click()
+
+
+    Dim style As Long
+
+    Dim SysMenuKillFlag As Integer
+
+    
+
+    'get the current style attributes for the textbox 
+
+    style& = GetWindowLong(Text1.hwnd, GWL_STYLE)
+
+    
+
+    'modify the style to show the sizing frame 
+
+    style& = style& Or WS_THICKFRAME
+
+    
+
+    'set the control to the chosen style 
+
+    SetControlStyle style&, Text1
+
+End Sub
+
+
+
+Private Sub mnuRestore_Click()
+
+
+    'restore the control to a normal textbox 
+
+    SetControlStyle initBoxStyle&, Text1
+
+End Sub
+
+
+
+Private Sub cmdEnd_Click()
+
+
+    Unload Me
+
+    End
+
+End Sub
+
+
+
+Private Sub SetControlStyle(style&, X As Control)
+
+
+    
+
+    Dim r&
+
+    
+
+
+    If style& Then
+
+        r& = SetWindowLong(X.hwnd, GWL_STYLE, style&)
+
+        r& = SetWindowPos(X.hwnd, Form1.hwnd, 0, 0, 0, 0, SWP_FLAGS)
+
+    End If
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1. Create a new project. On the Form1, add a Textbox (Te
+
+'     xt1), Commandbutton (Command1) and a Listbox (List1).
+
+2. On the Text1, set the Multiline Property to TRUE, and Scrollbars 
+to VERTICAL.
+
+3. On the Command1, set the Caption to "List Words".
+
+ADD TO DECLARATIONS
+
+Sub Command1_Click ()
+
+
+    ReDim astrWords(2) As String
+
+    Dim intLCV As Long
+
+
+subGetWords(Text1.Text, astrWords())
+
+
+    List1.Clear
+
+
+    For intLCV = 0 To UBound(astrWords)
+
+        List1.AddItem astrWords(intLCV)
+
+    Next intLCV
+
+
+End Sub
+
+
+
+Sub subGetWords (ByVal vstrSentence As String, rastrWords() As String)
+
+
+    Dim lngNoOfWords As Long
+
+    Dim lngLCV As Long
+
+    Dim lngRowNo As Long
+
+    Dim strSentenceChar As String
+
+    'count the number of words. Number of words = number of spaces pl
+
+    '     us one
+
+
+    For lngLCV = 1 To Len(vstrSentence)
+
+
+        If Mid$(vstrSentence, lngLCV, 1) = Space$(1) Then
+
+            lngNoOfWords = lngNoOfWords + 1
+
+        End If
+
+
+    Next lngLCV
+
+
+    'make the array big enough to hold the words
+
+    ReDim rastrWords(lngNoOfWords + 1)
+
+    'put each word into a row in the array
+
+    'lngRowNo = 0
+
+
+    For lngLCV = 1 To Len(vstrSentence)
+
+        strSentenceChar = Mid$(vstrSentence, lngLCV, 1)
+
+
+        If strSentenceChar Space$(1) Then
+
+            rastrWords(lngRowNo) = rastrWords(lngRowNo) & strSentenceChar
+
+        Else
+
+            lngRowNo = lngRowNo + 1
+
+        End If
+
+
+    Next lngLCV
+
+
+End Sub
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ROTATE A PICTUREBOX AND OTHER STUFF
+
+'Copy and Paste the following into the New Module(Module1.Bas)..
+'not in the form!
+
+Global Const SRCCOPY = &HCC0020
+
+Global Const Pi = 3.14159265359
+
+
+Declare Function SetPixel Lib "gdi32" (ByVal hdc As Long, ByVal x As Long, ByVal y As Long, ByVal crColor As Long) As Long
+
+
+Declare Function GetPixel Lib "gdi32" (ByVal hdc As Long, ByVal x As Long, ByVal y As Long) As Long
+
+
+Declare Function StretchBlt Lib "gdi32" (ByVal hdc As Long, ByVal x As Long, ByVal y As Long, ByVal nWidth As Long, ByVal nHeight As Long, ByVal hSrcDC As Long, ByVal xSrc As Long, ByVal ySrc As Long, ByVal nSrcWidth As Long, ByVal nSrcHeight As Long, ByVal dwRop As Long) As Long
+
+
+Sub bmp_rotate(pic1 As PictureBox, pic2 As PictureBox, ByVal theta!)
+
+
+    'Rotate the image in a picture box.
+
+    'pic1 is the picture box with the bitmap to rotate
+
+    'pic2 is the picture box to receive the rotated bitmap
+
+    'theta is the angle of rotation
+
+    
+
+    Dim c1x As Integer, c1y As Integer
+
+    Dim c2x As Integer, c2y As Integer
+
+    Dim a As Single
+
+    Dim p1x As Integer, p1y As Integer
+
+    Dim p2x As Integer, p2y As Integer
+
+    Dim n As Integer, r As Integer
+
+    
+
+    c1x = pic1.ScaleWidth \ 2
+
+    c1y = pic1.ScaleHeight \ 2
+
+    c2x = pic2.ScaleWidth \ 2
+
+    c2y = pic2.ScaleHeight \ 2
+
+    If c2x < c2y Then n = c2y Else n = c2x
+
+    n = n - 1
+
+    pic1hDC% = pic1.hdc
+
+    pic2hDC% = pic2.hdc
+
+
+    For p2x = 0 To n
+
+
+        For p2y = 0 To n
+
+            If p2x = 0 Then a = Pi / 2 Else a = Atn(p2y / p2x)
+
+            r = Sqr(1& * p2x * p2x + 1& * p2y * p2y)
+
+            p1x = r * Cos(a + theta!)
+
+            p1y = r * Sin(a + theta!)
+
+            c0& = GetPixel(pic1hDC%, c1x + p1x, c1y + p1y)
+
+            c1& = GetPixel(pic1hDC%, c1x - p1x, c1y - p1y)
+
+            c2& = GetPixel(pic1hDC%, c1x + p1y, c1y - p1x)
+
+            c3& = GetPixel(pic1hDC%, c1x - p1y, c1y + p1x)
+
+            If c0& <> -1 Then xret& = SetPixel(pic2hDC%, c2x + p2x, c2y + p2y, c0&)
+
+            If c1& <> -1 Then xret& = SetPixel(pic2hDC%, c2x - p2x, c2y - p2y, c1&)
+
+            If c2& <> -1 Then xret& = SetPixel(pic2hDC%, c2x + p2y, c2y - p2x, c2&)
+
+            If c3& <> -1 Then xret& = SetPixel(pic2hDC%, c2x - p2y, c2y + p2x, c3&)
+
+        Next
+
+
+        
+
+        t% = DoEvents()
+
+    Next
+
+
+End Sub
+~~~~~~~~~~~~~~~~~~~~~~~~
+3D WIRE FRAME CUBE
+
+'Place a medium sized picture (Picture1) on your form. 
+'Make sure it is square.
+
+
+'COPY THIS LONG ASS CODE TO THE DECLARATIONS OF YOUR FORM
+
+
+Const Pi = 3.14159265358979
+
+'Global variables
+
+Dim P(8, 2, 2) As Single 'The Eight Points of the Cube
+
+Dim Y(2, 2) As Single 'Y Matrix
+
+Dim X(2, 2) As Single 'X Matrix
+
+Dim sngYangle As Single 'Y rotation angle
+
+Dim sngXangle As Single 'X rotation angle
+
+
+Private Sub Form_Load()
+
+
+    Show
+
+    'Define the eight points of the cube
+
+    'P(n,0,0) = X co-ord P(n,0,1) = Y co-ord P(n,0,2) = Z co-ord
+
+    P(1, 0, 0) = -30: P(1, 0, 1) = -30: P(1, 0, 2) = 30
+
+    P(2, 0, 0) = -30: P(2, 0, 1) = 30: P(2, 0, 2) = 30
+
+    P(3, 0, 0) = 30: P(3, 0, 1) = 30: P(3, 0, 2) = 30
+
+    P(4, 0, 0) = 30: P(4, 0, 1) = -30: P(4, 0, 2) = 30
+
+    P(5, 0, 0) = -30: P(5, 0, 1) = -30: P(5, 0, 2) = -30
+
+    P(6, 0, 0) = -30: P(6, 0, 1) = 30: P(6, 0, 2) = -30
+
+    P(7, 0, 0) = 30: P(7, 0, 1) = 30: P(7, 0, 2) = -30
+
+    P(8, 0, 0) = 30: P(8, 0, 1) = -30: P(8, 0, 2) = -30
+
+    'Set up the picture with X=0,Y=0,Z=0 at the centre
+
+    Picture1.Scale (-100, 100)-(100, -100)
+
+    Picture1.BackColor = &H0&
+
+    Picture1.ForeColor = &HFFFFFF
+
+    Picture1.DrawWidth = 3
+
+    Picture1.DrawMode = 15
+
+    'Show the new cube
+
+    sbShow
+
+    'Write instructions on the screen
+
+    Picture1.CurrentX = -90: Picture1.CurrentY = 50: Picture1.Print "Click & Drag"
+
+End Sub
+
+
+
+Private Sub Picture1_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+
+
+    'Mouse moved over the cube display
+
+    Static sngOldX As Single
+
+    Static sngOldY As Single
+
+    
+
+
+    If Button = 1 Then 'Spin the cube if the mouse button pressed
+
+        'Calculate the rotate angles
+
+        sngXangle = -(Y - sngOldY) / (7 * 2 * Pi) 'Spin speed x 2 x PI (radians)
+
+        sngYangle = (X - sngOldX) / (7 * 2 * Pi)
+
+        'Calc new points
+
+        sbCalculate
+
+        'Show the new cube
+
+        sbShow
+
+    End If
+
+
+    'Remember the current mouse position for the future comparison
+
+    sngOldX = X: sngOldY = Y
+
+End Sub
+
+
+
+Private Sub sbCalculate()
+
+
+    'Calculate the matrix values
+
+    
+
+    Y(0, 0) = Cos(sngYangle) 'Y matrix
+
+    Y(2, 2) = Cos(sngYangle)
+
+    Y(0, 2) = Sin(sngYangle)
+
+    Y(2, 0) = -Sin(sngYangle)
+
+    Y(1, 1) = 1
+
+    sbMatrix Y()
+
+    X(2, 2) = Cos(sngXangle) 'X matrix
+
+    X(1, 1) = Cos(sngXangle)
+
+    X(2, 1) = Sin(sngXangle)
+
+    X(1, 2) = -Sin(sngXangle)
+
+    X(0, 0) = 1
+
+    sbMatrix X()
+
+End Sub
+
+
+
+Private Sub sbMatrix(Mx2() As Single)
+
+
+    'Calculate the Matrix
+
+    Dim Apex As Integer
+
+    Dim Row As Integer
+
+    Dim Col As Integer
+
+    Dim I As Integer
+
+    ReDim Mx3(4, 4) As Single
+
+
+    For Apex = 1 To 8
+
+
+        For Row = 0 To 2
+
+
+            For Col = 0 To 2
+
+                Mx3(Row, Col) = 0
+
+
+                For I = 0 To 2
+
+                    Mx3(Row, Col) = Mx3(Row, Col) + (P(Apex, Row, I) * Mx2(I, Col))
+
+                Next I
+
+
+            Next Col
+
+
+        Next Row
+
+
+
+        For Row = 0 To 2
+
+
+            For Col = 0 To 2
+
+                P(Apex, Row, Col) = Mx3(Row, Col)
+
+            Next Col
+
+
+        Next Row
+
+
+    Next Apex
+
+
+End Sub
+
+
+
+Private Sub sbShow()
+
+
+    'Clear the old image
+
+    Picture1.Cls
+
+    'Top Plane
+
+    Call sbDrawLine(P(1, 0, 0), P(1, 0, 1), P(1, 0, 2), P(2, 0, 0), P(2, 0, 1), P(2, 0, 2))
+
+    Call sbDrawLine(P(2, 0, 0), P(2, 0, 1), P(2, 0, 2), P(3, 0, 0), P(3, 0, 1), P(3, 0, 2))
+
+    Call sbDrawLine(P(3, 0, 0), P(3, 0, 1), P(3, 0, 2), P(4, 0, 0), P(4, 0, 1), P(4, 0, 2))
+
+    Call sbDrawLine(P(4, 0, 0), P(4, 0, 1), P(4, 0, 2), P(1, 0, 0), P(1, 0, 1), P(1, 0, 2))
+
+    'Bottom Plane
+
+    Call sbDrawLine(P(5, 0, 0), P(5, 0, 1), P(5, 0, 2), P(6, 0, 0), P(6, 0, 1), P(6, 0, 2))
+
+    Call sbDrawLine(P(6, 0, 0), P(6, 0, 1), P(6, 0, 2), P(7, 0, 0), P(7, 0, 1), P(7, 0, 2))
+
+    Call sbDrawLine(P(7, 0, 0), P(7, 0, 1), P(7, 0, 2), P(8, 0, 0), P(8, 0, 1), P(8, 0, 2))
+
+    Call sbDrawLine(P(8, 0, 0), P(8, 0, 1), P(8, 0, 2), P(5, 0, 0), P(5, 0, 1), P(5, 0, 2))
+
+    'Join the Two
+
+    Call sbDrawLine(P(5, 0, 0), P(5, 0, 1), P(5, 0, 2), P(1, 0, 0), P(1, 0, 1), P(1, 0, 2))
+
+    Call sbDrawLine(P(6, 0, 0), P(6, 0, 1), P(6, 0, 2), P(2, 0, 0), P(2, 0, 1), P(2, 0, 2))
+
+    Call sbDrawLine(P(7, 0, 0), P(7, 0, 1), P(7, 0, 2), P(3, 0, 0), P(3, 0, 1), P(3, 0, 2))
+
+    Call sbDrawLine(P(8, 0, 0), P(8, 0, 1), P(8, 0, 2), P(4, 0, 0), P(4, 0, 1), P(4, 0, 2))
+
+End Sub
+
+
+
+Private Sub sbDrawLine(P1X As Single, P1Y As Single, P1Z As Single, P2X As Single, P2Y As Single, P2Z As Single)
+
+
+    'Draw the Lines
+
+    Dim intDepth As Integer
+
+    
+
+    intDepth = 200 - (P1Z + P2Z) 'Brightness calculated On the Z co-ordinate
+
+    Picture1.Line (P1X, P1Y)-(P2X, P2Y), RGB(0, 0, intDepth)
+
+End Sub
+~~~~~~~~~~~~~~~~~~~~~~
+'1.) Start a New Project in your 32bit Visual Basics.
+
+'2.) Add the Custom Control OCX: "MSWINSCK.OCX" too the Project.
+
+'3.) Look for the Icon in the ToolBox in Visual Basics(On the Lef
+
+'     t) that looks 'like two Computers, Click on it and add it to the 
+
+
+'     Form.
+
+    '3.) Make a TextBox and name it: "Console", set the Multiline to 
+
+    '     True and set 'ScrollBars to Vertical.
+
+    '4.) Make another TextBox and name it: "Msg"
+
+    '5.) Make another TextBox again and name it: "Address", 
+
+    '6.) Make one more TextBox and name it: "Port"
+
+    '7.) Last but notleast, make a CommandButton and name it: "Comman
+
+    '     d1" and set 'the caption to: "Connect".
+
+    'NOTE: If you dont have the Custom Control: "MSWINSCK.OCX", goto 
+
+    '     'www.microsoft.com or www.yahoo.com and look for it in their File
+
+    '     Searches
+
+'
+
+'Side Effects:None
+
+'
+
+'Code provided by Planet Source Code(tm) (http://www.Planet-Sourc
+
+'     e-Code.com) 'as is', without warranties as to performance, fitnes
+
+'     s, merchantability,and any other warranty (whether expressed or i
+
+'     mplied).
+
+'This source code is copyrighted by Planet Source Code who has ex
+
+'     clusive rights to distribute it.
+
+'It is freely redistributable for personal use in source code for
+
+'     m, or for personal or business use in a non-source code binary ex
+
+'     ecutable.
+
+'All other redistributions are prohibited without express written
+
+'     consent from Exhedra Solutions, Inc.
+
+'***************************************************************
+
+
+
+'Ok, Copy and Paste the following below this in your Form, 
+'NOT A MODULE/BAS!!
+
+'Heres the code, Start Copying:
+
+Dim Text As String
+
+
+Private Sub Command1_Click()
+
+
+    Winsock1.Connect Address.text, Port.text
+
+End Sub
+
+
+
+Private Sub Form_Load()
+
+
+    Winsock1.LocalPort = 0
+
+    Winsock1.RemotePort = 0
+
+End Sub
+
+
+
+Private Sub Form_Unload(Cancel As Integer)
+
+
+    Winsock1.Close
+
+End Sub
+
+
+
+Private Sub Msg_KeyPress(KeyAscii As Integer)
+
+
+
+    If KeyAscii = 13 Then
+
+
+        If Winsock1.State = sckConnected Then
+
+            Winsock1.SendData Msg.text
+
+        End If
+
+
+        Console.text = Console.text & Msg.text & vbCrLf
+
+        Msg.text = ""
+
+        KeyAscii = 0
+
+    End If
+
+
+End Sub
+
+
+
+Private Sub Winsock1_DataArrival(ByVal bytesTotal As Long)
+
+
+    Winsock1.GetData text
+
+    Console.text = Console.text & text & vbCrLf
+
+End Sub
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+MOVING A FORM WITH NO TITLE BAR
+
+(add this to the declarations of your form)
+
+Private Declare Function SendMessage Lib "User32" _
+Alias "SendMessageA" (ByVal hWnd As Long, _
+ByVal wMsg As Long, _
+ByVal wParam As Long, _
+lParam As Any) As Long
+
+Private Declare Sub ReleaseCapture Lib "User32" ()
+
+Const WM_NCLBUTTONDOWN = &HA1
+Const HTCAPTION = 2
+
+(add this to the Mouse_Move of a control)
+
+Dim lngReturnValue As Long
+
+If Button = 1 Then
+Call ReleaseCapture
+lngReturnValue = SendMessage(Form1.hWnd, WM_NCLBUTTONDOWN, _
+HTCAPTION, 0&)
+End If
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+CREATING A NEW FORM AT RUN-TIME
+
+Dim shit As New Form1
+shit.Show
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+CREATING INFINITE FORMS ALL OVER THE PLACE!!!
+
+On Error GoTo erhandlerz
+Kewls:
+Randomize
+hip = Int(9999 * Rnd + 1)
+Dim shit As New Form1
+shit.Left = hip
+shit.Top = hip
+shit.Show
+
+erhandlerz:
+GoTo Kewls
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+< a href="aol://5862:144/members.aol.com:/stevecase">
+~~~~~~~~~~~~~~~~~~~~~~~
+Here's what you do to make a screen saver: Start a new project. Set the windowstate property of the form to "2 - Maximized", and the border style of the form to zero. In the "KeyDown" event of the form put the "End" statement. Then in the mouse move event of the form put something like this:
+Static ScreenSaverVar As Integer
+ScreenSaverVar = ScreenSaverVar + 1
+If ScreenSaverVar > 2 Then End
+
+Now select "Make soandso.exe" in the file menu. When it asks you what you want to name the exe, add a "*.scr" extension to the end of the name (example: Pat.scr). Then select the directory "c:\windows\system\" as the place to make this program. And there you go, you've made a screensaver which you can use on your desktop (note: you'll probably want to jazz up the form a little bit first) 
+~~~~~~~~~~~~~~~~~~~~~~~~~
+CAPTURE SCREEN
+
+1. Add CaptScrn.bas to project!
+2. Add Picturebox to form
+3. Put following code into Picture1_Click event
+
+Form1.Visible = False
+Picture1.Cls
+    CopyDesktop Picture1
+    Picture1.Refresh
+Form1.Visible = True
+~~~~~~~~~~~~~~~~~~~~~~~~
+Make a textbox scroll to the bottom
+
+Text1.SelStart = Len(Text1.Text)
+~~~~~~~~~~~~~~~~~~~~~~~~
+Minimize All Windows and Applications
+
+Put this in the Declarations of your form:
+
+Private Declare Sub keybd_event Lib "user32" (ByVal bVk As Byte, ByVal _
+bScan As Byte, ByVal dwFlags As Long, ByVal dwExtraInfo As Long)
+Private Const KEYEVENTF_KEYUP = &H2
+Private Const VK_LWIN = &H5B
+
+This minimizes everything:
+
+Call keybd_event(VK_LWIN, 0, 0, 0)
+Call keybd_event(77, 0, 0, 0)
+Call keybd_event(VK_LWIN, 0, KEYEVENTF_KEYUP, 0)
+~~~~~~~~~~~~~~~~~~~~~~~~
+WINSOCK REVEALED
+
+SERVER
+The following code is towards
+the winsock control on the
+Server form:
+
+Winsock.Close  						'closes any previous connections
+Winsock.LocalPort = CLng(187)  				'187 is the port
+Winsock.Listen  						'listens to see if client wants to connect
+
+Winsock_ConnectionRequest()
+If Winsock.State <> sckClosed Then Winsock.Close 		'closes connection if one is already open
+Winsock.Accept requestID 				'allows new connection
+
+Winsock_DataArrival()
+Dim strData
+Call Winsock.GetData(strData, vbString) 			'gets the data sent by the client
+
+CLIENT
+The Following code is towards
+the winsock control on the
+Client form:
+
+Winsock.Close 						'closes any previous connections
+Winsock.Connect put IP here, "187" 			'sends ur IP to connect to server:187
+
+Winsock_DataArrival()
+Dim strData
+Call Winsock.GetData(strData, vbString) 			'gets the data sent by the server
+~~~~~~~~~~~~~~~~~~~~~
+Brought 2 U by SESoftware@Hotmail.com

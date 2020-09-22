@@ -1,0 +1,238 @@
+Showing & Hiding The Mouse Pointer
+
+DECLARATIONS:
+
+Declare Function ShowCursor Lib "User32" (ByVal bShow As Long) _
+  As Long
+Public lShowCursor As Long
+Public lRet As Long
+
+
+CODE:
+
+Public Sub HideMouse()
+  Do
+    lShowCursor = lShowCursor - 1
+    lRet = ShowCursor(False)
+  Loop Until lRet < 0
+End Sub
+
+Public Sub ShowMouse()
+  Do
+    lShowCursor = lShowCursor - 1
+    lRet = ShowCursor(True)
+  Loop Until lRet >= 0
+End Sub
+
+EXECUTION:
+
+Call HideMouse
+Call ShowMouse
+~~~~~~~~~~~~~~~~~~~~~~~~~
+Remove A Form's Close Button
+
+DECLARATIONS:
+
+Declare Function DrawMenuBar Lib "User32" (ByVal hWnd As _
+  Long) As Long
+Declare Function GetMenuItemCount Lib "User32" (ByVal hMenu _
+  As Long) As Long
+Declare Function GetSystemMenu Lib "User32" (ByVal hWnd As _
+  Long, ByVal bRevert As Long) As Long
+Declare Function RemoveMenu Lib "User32" (ByVal hMenu As Long, _
+  ByVal nPosition As Long, ByVal wFlags As Long) As Long
+Public Const MF_BYPOSITION = &H400
+Public Const MF_REMOVE = &H1000
+
+
+FORM_LOAD:
+
+Dim hMenu As Long
+  Dim lItemCount As Long
+  hMenu = GetSystemMenu(Me.hWnd, 0)
+  If hMenu Then
+    lItemCount = GetMenuItemCount(hMenu)
+    Call RemoveMenu(hMenu, lItemCount - 1, MF_REMOVE Or _
+      MF_BYPOSITION)
+    Call RemoveMenu(hMenu, lItemCount - 2, MF_REMOVE Or _
+      MF_BYPOSITION)
+    Call DrawMenuBar(Me.hWnd)
+  End If
+~~~~~~~~~~~~~~~~
+Get The Short Pathname Of A File
+
+DECLARATIONS: (Add To Module)
+
+Declare Function GetShortPathName Lib "kernel32" Alias _
+  "GetShortPathNameA" (ByVal lpszLongPath As String, ByVal _
+  lpszShortPath As String, ByVal cchBuffer As Long) As Long
+
+
+EXECUTION:
+
+Dim sFile As String, sShortFile As String * 67
+  Dim lRet As Long
+
+  CommonDialog1.ShowOpen
+  sFile = CommonDialog1.filename
+  lRet = GetShortPathName(sFile, sShortFile, Len(sShortFile))
+  sFile = Left(sShortFile, lRet)
+  Text1.Text = sFile
+~~~~~~~~~~~~~~~~~
+Change Desktop Wallpaper
+
+DECLARATIONS:
+
+Option Explicit
+
+Private Declare Function SystemParametersInfo Lib "user32" Alias "SystemParametersInfoA" (ByVal uAction As Long, ByVal uParam As Long, ByVal lpvParam As Any, ByVal fuWinIni As Long) As Long
+Private Const SPI_SETDESKWALLPAPER = 20
+Private Const SPIF_UPDATEINIFILE = 1
+Private picName As String
+
+
+EXECUTION:
+
+picName = "C:\tmp\myPicture.bmp"
+    
+    SystemParametersInfo SPI_SETDESKWALLPAPER, 0, picName, SPIF_UPDATEINIFILE
+~~~~~~~~~~~~~~~~~~
+Minimize All Windows And Reveal Desktop
+
+DECLARATIONS:
+
+Option Explicit
+Private Const WM_COMMAND = &H111
+Private Const MIN_ALL = 419
+Private Const MIN_ALL_UNDO = 416
+Private Declare Function FindWindow Lib "user32" Alias "FindWindowA" (ByVal lpClassName As String, ByVal lpWindowName As String) As Long
+Private Declare Function PostMessage Lib "user32" Alias "PostMessageA" (ByVal hwnd As Long, ByVal wMsg As Long, ByVal wParam As Long, ByVal lParam As Long) As Long
+
+
+EXECUTION: (Show Desktop)
+
+Dim lRetVal As Long
+    lRetVal = FindWindow("Shell_TrayWnd", vbNullString)
+    lRetVal = PostMessage(lRetVal, WM_COMMAND, MIN_ALL, 0&)
+
+EXECUTION: (Hide Desktop)
+
+Dim lRetVal As Long
+    lRetVal = FindWindow("Shell_TrayWnd", vbNullString)
+    lRetVal = PostMessage(lRetVal, WM_COMMAND, MIN_ALL_UNDO, 0&)
+~~~~~~~~~~~~~~~~~~~
+Flashing Form
+
+MODULE:
+
+Public Declare Function FlashWindow Lib "user32" (ByVal hwnd As Long, ByVal
+bInvert As Long) As Long
+
+
+EXECUTION: (Add To Timer With Interval Of 500)
+
+Dim RetVal As Long
+    RetVal = FlashWindow(Form1.hwnd, 1) 
+~~~~~~~~~~~~~~~~~~
+Transparent Form
+
+DECLARATIONS: (Add To Module)
+
+Declare Function SetWindowLong Lib "user32" _
+Alias "SetWindowLongA" _
+(ByVal hwnd As Long, _
+ByVal nIndex As Long, _
+ByVal dwNewLong As Long) _
+As Long
+Const WS_EX_TRANSPARENT = &H20&
+Const GWL_EXSTYLE = (-20)
+
+
+EXECUTION:
+
+Dim Ret As Long
+   Ret = SetWindowLong(frmMain.hwnd, GWL_EXSTYLE, WS_EX_TRANSPARENT)
+   Form1.Show
+~~~~~~~~~~~~~~~~~
+Picture Blending
+
+DECLARATIONS:
+
+Option Explicit 
+
+Private Function Blend( _
+     ByVal Color1 As Long, _
+     ByVal Color2 As Long) As Long
+
+     Dim r As Long, g As Long, b As Long
+
+     b = ((((Color2 \ &H10000) And &HFF) * 50) + _
+          (((Color1 \ &H10000) And &HFF) * 50)) \ 100
+
+     g = ((((Color2 \ &H100) And &HFF) * 50) + _
+          (((Color1 \ &H100) And &HFF) * 50)) \ 100
+
+     r = (((Color2 And &HFF) * 50) + _
+          ((Color1 And &HFF) * 50)) \ 100
+
+     Blend = RGB(r, g, b)
+End Function
+
+
+EXECUTION:
+
+Dim x As Long
+     Dim y As Long
+
+     For y = 0 To Picture1.ScaleHeight
+          For x = 0 To Picture1.ScaleWidth
+               Picture3.PSet (x, y), Blend( _
+                    Picture1.Point(x, y), _
+                    Picture2.Point(x, y))
+          Next
+     Next
+~~~~~~~~~~~~~~~~~~~~~~~
+List All Directories and Sub Directories
+(Add a dir box, Add a list box)
+
+DECLARATIONS:
+
+Sub Listdir(path)
+    Dim d(1000)
+    Dir1.path = path
+
+
+    For lop = 0 To Dir1.ListCount - 1
+        d(cnt) = Dir1.List(lop)
+        cnt = cnt + 1
+    Next lop
+
+
+    For lop = 0 To cnt - 1
+        List1.AddItem d(lop)
+        cur_depth = cur_depth + 1
+            listdir d(lop)
+    Next lop
+    cur_depth = curr_depth - 1
+End Sub
+
+
+EXECUTION:
+
+Listdir ("C:\")
+~~~~~~~~~~~~~~~~~~~~~~~
+Retrieving Only The HTML Source From A Web Page
+
+NEEDS:  Microsoft Internet Transfer Controls
+        Microsoft Internet Controls
+
+EXECUTION:
+
+strSource = Inet1.OpenURL(Text1.text)
+X = "C:\Windows\Desktop\Temp.html"
+Open X For Output As #1
+Print #1, strSource
+Close #1
+WebBrowser1.Navigate "C:\Windows\Desktop\Temp.html"
+~~~~~~~~~~~~~~~~~~~~~~
+Brought 2 U by SESoftware@Hotmail.com
